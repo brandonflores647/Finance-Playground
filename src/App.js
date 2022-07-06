@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Balance from './components/Balance';
+import HistoryTransaction from './components/HistoryTransaction';
 
 function App() {
 
@@ -15,13 +16,12 @@ function App() {
 
   const handleNewTransaction = (e) => {
     e.preventDefault();
-    transList.push({
+    transList.unshift({
       title,
-      amount
+      amount: parseInt(amount, 10)
     });
     setTitle('');
     setAmount(0);
-    console.log(transList)
   }
 
   return (
@@ -54,6 +54,8 @@ function App() {
           </label>
           <button type='submit'>Submit</button>
         </form>
+
+        <HistoryTransaction list={transList}/>
       </Route>
       <Route>
         <Redirect to='/' />
