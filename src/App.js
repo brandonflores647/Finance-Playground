@@ -1,6 +1,15 @@
+import { Switch, Route, Redirect } from 'react-router-dom';
+
 function App() {
   return (
-    <h1>Hello from App</h1>
+    <Switch>
+      <Route exact path='/'>
+        <h1>test</h1>
+      </Route>
+      <Route>
+        <Redirect to='/' />
+      </Route>
+    </Switch>
   );
 }
 
