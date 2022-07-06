@@ -6,20 +6,27 @@ import HistoryTransaction from './components/HistoryTransaction';
 
 function App() {
 
-  const [balance, setBalance] = useState(0);
-  const [income, setIncome] = useState(0);
-  const [expense, setExpense] = useState(0);
+  let [balance, setBalance] = useState(0);
+  let [income, setIncome] = useState(0);
+  let [expense, setExpense] = useState(0);
   const [amount, setAmount] = useState(0);
   const [title, setTitle] = useState('');
 
   const [transList, ] = useState([]);
 
-  const handleNewTransaction = (e) => {
+  const handleNewTransaction = async (e) => {
     e.preventDefault();
     transList.unshift({
       title,
       amount: parseInt(amount, 10)
     });
+    console.log(title)
+    setBalance(balance += parseInt(amount, 10));
+    if (amount > 0) {
+      setIncome(income += parseInt(amount, 10))
+    } else {
+      setExpense(expense += parseInt(amount, 10))
+    }
     setTitle('');
     setAmount(0);
   }
