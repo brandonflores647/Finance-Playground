@@ -11,7 +11,7 @@ function App() {
   let [balance, setBalance] = useState(0);
   let [income, setIncome] = useState(0);
   let [expense, setExpense] = useState(0);
-  const [amount, setAmount] = useState(null);
+  const [amount, setAmount] = useState(0);
   const [title, setTitle] = useState('');
 
   const [transList, ] = useState([]);
@@ -20,14 +20,15 @@ function App() {
     e.preventDefault();
     if (title && amount) {
       transList.unshift({
-      title,
-        amount: parseInt(amount, 10)
+        title,
+        amount: parseFloat(amount, 10)
       });
-      setBalance(balance += parseInt(amount, 10));
+      console.log(transList)
+      setBalance(balance += parseFloat(amount, 10));
       if (amount > 0) {
-        setIncome(income += parseInt(amount, 10))
+        setIncome(income += parseFloat(amount, 10))
       } else {
-        setExpense(expense += parseInt(amount, 10))
+        setExpense(expense += parseFloat(amount, 10))
       }
       setTitle('');
       setAmount(0);
@@ -57,7 +58,7 @@ function App() {
                 className='input-field'
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-              />
+                />
               <label>Amount</label>
               <div>
                 <input
@@ -65,6 +66,7 @@ function App() {
                   placeholder='0'
                   className='input-field'
                   value={amount}
+                  step='0.1'
                   onChange={(e) => setAmount(e.target.value)}
                 />
                 <section id='amount-desc-container'>

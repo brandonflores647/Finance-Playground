@@ -9,8 +9,8 @@ const HistoryTransaction = ({list}) => {
                     let check;
                     ele.amount < 0 ? check = 'neg' : check = 'pos'
                     return (
-                        <div className='li-container'>
-                            <li key={i} className={`trans-list ${check}`}>
+                        <div key={i} className='li-container'>
+                            <li className={`trans-list ${check}`}>
                                 <p>{ele.title}</p>
                                 <p>{ele.amount < 0 ? '-' : '+'}
                                     ${ele.amount < 0 ? `${ele.amount}`.slice(1) : ele.amount}
