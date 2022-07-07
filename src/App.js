@@ -40,7 +40,9 @@ function App() {
         <h1>Home</h1>
       </Route>
       <Route exact path='/expense-tracker'>
-        <h1>Expense Tracker</h1>
+        <div className='page-container'>
+
+        <h1 className='container-title'>Expense Tracker</h1>
 
         <Balance bal={balance} income={income} expense={expense}/>
 
@@ -76,6 +78,7 @@ function App() {
         </div>
 
         <HistoryTransaction list={transList}/>
+        </div>
       </Route>
       <Route>
         <Redirect to='/' />

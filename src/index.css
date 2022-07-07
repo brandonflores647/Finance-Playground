@@ -10,3 +10,9 @@ body {
     padding: 0;
     background-color: #F5F5F5;
 }
+
+.page-container {
+    width: 40%;
+    margin-right: 30%;
+    margin-left: 30%;
+}
