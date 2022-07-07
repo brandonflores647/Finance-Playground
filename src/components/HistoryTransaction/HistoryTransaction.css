@@ -10,10 +10,11 @@
 #history-container > ul {
     padding: 15px 15px 0px 15px;
     max-height: 600px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .container-title {
+    margin-top: 50px;
     border-bottom: 1px solid black;
     font-weight: 500;
 }

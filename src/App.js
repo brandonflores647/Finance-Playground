@@ -4,31 +4,34 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Balance from './components/Balance';
 import HistoryTransaction from './components/HistoryTransaction';
 
+import './ExpenseForm.css'
+
 function App() {
 
   let [balance, setBalance] = useState(0);
   let [income, setIncome] = useState(0);
   let [expense, setExpense] = useState(0);
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(null);
   const [title, setTitle] = useState('');
 
   const [transList, ] = useState([]);
 
   const handleNewTransaction = async (e) => {
     e.preventDefault();
-    transList.unshift({
+    if (title && amount) {
+      transList.unshift({
       title,
-      amount: parseInt(amount, 10)
-    });
-    console.log(title)
-    setBalance(balance += parseInt(amount, 10));
-    if (amount > 0) {
-      setIncome(income += parseInt(amount, 10))
-    } else {
-      setExpense(expense += parseInt(amount, 10))
+        amount: parseInt(amount, 10)
+      });
+      setBalance(balance += parseInt(amount, 10));
+      if (amount > 0) {
+        setIncome(income += parseInt(amount, 10))
+      } else {
+        setExpense(expense += parseInt(amount, 10))
+      }
+      setTitle('');
+      setAmount(0);
     }
-    setTitle('');
-    setAmount(0);
   }
 
   return (
@@ -41,26 +44,36 @@ function App() {
 
         <Balance bal={balance} income={income} expense={expense}/>
 
-        <form onSubmit={handleNewTransaction}>
-          <label>
-            Title
-            <input
-              type='text'
-              placeholder='Enter title ...'
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </label>
-          <label>
-            Amount
-            <input
-              type='number'
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-            />
-          </label>
-          <button type='submit'>Submit</button>
-        </form>
+        <div id='expense-form-container'>
+          <h2 className='container-title'>Add new transaction</h2>
+          <form id='expense-form' onSubmit={handleNewTransaction}>
+            <div id='expense-form-inputs'>
+              <label>Title</label>
+              <input
+                type='text'
+                placeholder='Enter title ...'
+                className='input-field'
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+              <label>Amount</label>
+              <div>
+                <input
+                  type='number'
+                  placeholder='0'
+                  className='input-field'
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
+                />
+                <section id='amount-desc-container'>
+                  <p>positive - income</p>
+                  <p>negative - expense</p>
+                </section>
+              </div>
+            </div>
+            <button id={`submit-expense-form-button${!title || !amount ? '-err' : ''}`} type='submit'>Submit</button>
+          </form>
+        </div>
 
         <HistoryTransaction list={transList}/>
       </Route>
