@@ -16,7 +16,7 @@ const Balance = ({bal, income, expense}) => {
                                 Number(income).toFixed(2)
                             }</p>
                         </div>
-                        <line />
+                        <div id='line'></div>
                         <div>
                             <p className='income-expense-text'>EXPENSE</p>
                             <p className='income-expense-text expense'>{

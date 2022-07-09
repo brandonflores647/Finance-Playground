@@ -14,8 +14,15 @@ function App() {
   const [amount, setAmount] = useState(0);
   const [title, setTitle] = useState('');
 
-  const [transList, ] = useState([]);
+  const [transList, setTransList] = useState([]);
 
+  useEffect(() => {
+    let list = localStorage.getItem('expense-history');
+    if (list) {
+      setTransList(JSON.parse(list));
+    }
+  }, [])
+  console.log(localStorage.getItem('expense-history'))
   const handleNewTransaction = async (e) => {
     e.preventDefault();
     if (title && amount) {
@@ -23,7 +30,7 @@ function App() {
         title,
         amount: parseFloat(amount, 10)
       });
-      console.log(transList)
+      localStorage.setItem('expense-history', JSON.stringify(transList));
       setBalance(balance += parseFloat(amount, 10));
       if (amount > 0) {
         setIncome(income += parseFloat(amount, 10))

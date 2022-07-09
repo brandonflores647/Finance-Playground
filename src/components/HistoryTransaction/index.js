@@ -5,7 +5,7 @@ const HistoryTransaction = ({list}) => {
         <div id='history-container'>
             <h2 className='container-title'>History</h2>
             <ul>
-                {list.map((ele, i) => {
+                {list ? list.map((ele, i) => {
                     let check;
                     ele.amount < 0 ? check = 'neg' : check = 'pos'
                     return (
@@ -18,7 +18,7 @@ const HistoryTransaction = ({list}) => {
                             </li>
                         </div>
                     )
-                })}
+                }) : null}
             </ul>
         </div>
     );
