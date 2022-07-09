@@ -25,9 +25,9 @@ const HistoryTransaction = ({info, setTransList, setBalance, setIncome, setExpen
             }
 
             const newObj = {
-                balance: newBal,
-                income: newIncome,
-                expense: newExpense,
+                balance: newBal.toFixed(2),
+                income: newIncome.toFixed(2),
+                expense: newExpense.toFixed(2),
                 transList: info.transList
             }
 
@@ -49,13 +49,16 @@ const HistoryTransaction = ({info, setTransList, setBalance, setIncome, setExpen
                     let check;
                     info.transList[i].amount < 0 ? check = 'neg' : check = 'pos'
                     return (
+                        <div className='li-wrapper'>
+                        <i className="fa-solid fa-xmark fa-3x" onClick={() => handleDelete(info.transList.indexOf(ele))}></i>
                         <div key={i} className='li-container'>
-                            <li className={`trans-list ${check}`} onClick={() => handleDelete(info.transList.indexOf(ele))}>
+                            <li className={`trans-list ${check}`}>
                                 <p>{info.transList[i].title}</p>
                                 <p>{info.transList[i].amount < 0 ? '-' : '+'}
                                     ${info.transList[i].amount < 0 ? `${info.transList[i].amount}`.slice(1) : info.transList[i].amount}
                                 </p>
                             </li>
+                        </div>
                         </div>
                     )
                 }) : null}

@@ -29,10 +29,10 @@ function App() {
   const handleNewTransaction = async (e) => {
     e.preventDefault();
     if (title && amount) {
-      transList[Object.keys(transList).length] = {
+      transList.unshift({
         title,
         amount: parseFloat(amount, 10),
-      };
+      });
       setBalance(balance += parseFloat(amount, 10));
       if (amount > 0) {
         setIncome(income += parseFloat(amount, 10))
