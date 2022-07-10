@@ -35,13 +35,21 @@ function App() {
       });
       setBalance(balance += parseFloat(amount, 10));
       if (amount > 0) {
-        setIncome(income += parseFloat(amount, 10))
+        setIncome(income += parseFloat(amount, 10));
       } else {
-        setExpense(expense += parseFloat(amount, 10))
+        setExpense(expense += parseFloat(amount, 10));
       }
       setTitle('');
       setAmount(0);
-      localStorage.setItem('expense-history', JSON.stringify({balance, income, expense, transList}));
+
+      const obj = {
+        balance: Math.round((balance + Number.EPSILON)*100)/100,
+        income: Math.round((income + Number.EPSILON)*100)/100,
+        expense: Math.round((expense + Number.EPSILON)*100)/100,
+        transList
+      }
+
+      localStorage.setItem('expense-history', JSON.stringify(obj));
     }
   }
 
