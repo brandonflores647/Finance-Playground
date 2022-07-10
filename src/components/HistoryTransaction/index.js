@@ -34,6 +34,8 @@ const HistoryTransaction = ({info, setTransList, setBalance, setIncome, setExpen
             localStorage.setItem('expense-history', JSON.stringify(newObj));
             setTransList(info.transList);
         }
+
+        // eslint-disable-next-line
     }, [del])
 
     const handleDelete = (index) => {

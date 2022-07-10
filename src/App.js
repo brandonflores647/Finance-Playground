@@ -15,9 +15,9 @@ function App() {
   const [title, setTitle] = useState('');
 
   const [transList, setTransList] = useState([]);
-  let storage = JSON.parse(localStorage.getItem('expense-history'));
 
   useEffect(() => {
+    let storage = JSON.parse(localStorage.getItem('expense-history'));
     if (storage) {
       setBalance(storage.balance);
       setIncome(storage.income);
@@ -97,7 +97,7 @@ function App() {
           </form>
         </div>
 
-        <HistoryTransaction info={storage} setTransList={setTransList} setBalance={setBalance} setIncome={setIncome} setExpense={setExpense}/>
+        <HistoryTransaction info={JSON.parse(localStorage.getItem('expense-history'))} setTransList={setTransList} setBalance={setBalance} setIncome={setIncome} setExpense={setExpense}/>
         </div>
       </Route>
       <Route>
