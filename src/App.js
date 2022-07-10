@@ -15,9 +15,9 @@ function App() {
   const [title, setTitle] = useState('');
 
   const [transList, setTransList] = useState([]);
+  let storage = JSON.parse(localStorage.getItem('expense-history'));
 
   useEffect(() => {
-    let storage = JSON.parse(localStorage.getItem('expense-history'));
     if (storage) {
       setBalance(storage.balance);
       setIncome(storage.income);
@@ -25,23 +25,31 @@ function App() {
       setTransList(storage.transList);
     }
   }, [])
-  // console.log(localStorage.getItem('expense-history'))
+
   const handleNewTransaction = async (e) => {
     e.preventDefault();
     if (title && amount) {
       transList.unshift({
         title,
-        amount: parseFloat(amount, 10)
+        amount: parseFloat(amount, 10),
       });
       setBalance(balance += parseFloat(amount, 10));
       if (amount > 0) {
-        setIncome(income += parseFloat(amount, 10))
+        setIncome(income += parseFloat(amount, 10));
       } else {
-        setExpense(expense += parseFloat(amount, 10))
+        setExpense(expense += parseFloat(amount, 10));
       }
       setTitle('');
       setAmount(0);
-      localStorage.setItem('expense-history', JSON.stringify({balance, income, expense, transList}));
+
+      const obj = {
+        balance: Math.round((balance + Number.EPSILON)*100)/100,
+        income: Math.round((income + Number.EPSILON)*100)/100,
+        expense: Math.round((expense + Number.EPSILON)*100)/100,
+        transList
+      }
+
+      localStorage.setItem('expense-history', JSON.stringify(obj));
     }
   }
 
@@ -89,7 +97,7 @@ function App() {
           </form>
         </div>
 
-        <HistoryTransaction list={transList}/>
+        <HistoryTransaction info={storage} setTransList={setTransList} setBalance={setBalance} setIncome={setIncome} setExpense={setExpense}/>
         </div>
       </Route>
       <Route>
