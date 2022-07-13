@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Balance from './components/Balance';
 import HistoryTransaction from './components/HistoryTransaction';
+import Navbar from './components/Navbar';
 
 import './ExpenseForm.css'
 
@@ -54,6 +55,9 @@ function App() {
   }
 
   return (
+    <>
+    <Navbar />
+    <div id='content-wrapper'>
     <Switch>
       <Route exact path='/'>
         <h1>Home</h1>
@@ -104,6 +108,8 @@ function App() {
         <Redirect to='/' />
       </Route>
     </Switch>
+    </div>
+    </>
   );
 }
 

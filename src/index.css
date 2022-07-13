@@ -16,3 +16,7 @@ body {
     margin-right: 30%;
     margin-left: 30%;
 }
+
+#content-wrapper {
+    margin-top: 10rem;
+}
