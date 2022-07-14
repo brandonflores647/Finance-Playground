@@ -24,3 +24,38 @@
     margin-top: 25px;
     margin-left: 15px;
 }
+
+#compount-top {
+    display: flex;
+    width: 100%;
+    height: 80px;
+    justify-content: right;
+}
+
+#compount-reset-button {
+    width: 150px;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    cursor: pointer;
+    background-color: white;
+    font-size: 20px;
+    font-weight: 600;
+    color: #B9342D;
+
+    border: 2px solid #B9342D;
+    border-radius: 7px;
+    box-shadow: 0px 3px 0px 0px #B9342D;
+    transition: box-shadow .1s ease,
+                margin-top .1s ease,
+                margin-bottom .1s ease,
+}
+#compount-reset-button:hover {
+    margin-top: 8px;
+    box-shadow: 0px 5px 0px 0px #B9342D;
+}
+#compount-reset-button:active:hover {
+    margin-top: 13px;
+    box-shadow: 0px 0px 0px 0px #B9342D;
+}
