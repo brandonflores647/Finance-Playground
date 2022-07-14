@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Balance from './components/Balance';
+import CompoundInterestForm from './components/CompoundInterestForm';
 import HistoryTransaction from './components/HistoryTransaction';
 import Navbar from './components/Navbar';
 
@@ -107,6 +108,7 @@ function App() {
       <Route exact path='/compound-interest'>
         <div className='page-container'>
           <h1 className='container-title'>Compound Interest Calculator</h1>
+          <CompoundInterestForm />
         </div>
       </Route>
       <Route>

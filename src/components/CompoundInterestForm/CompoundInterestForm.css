@@ -1,0 +1,20 @@
+#compound-interest-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#compound-interest-form > label {
+    font-weight: 600;
+}
+
+.input-field-c {
+    height: 30px;
+    border: 1px solid #D9D9D9;
+    margin-bottom: 15px;
+    padding: 0px 10px 0px 10px;
+    width: 100%;
+}
+.input-field-c:focus {
+    outline: none;
+}
