@@ -104,6 +104,11 @@ function App() {
         <HistoryTransaction info={JSON.parse(localStorage.getItem('expense-history'))} setTransList={setTransList} setBalance={setBalance} setIncome={setIncome} setExpense={setExpense}/>
         </div>
       </Route>
+      <Route exact path='/compound-interest'>
+        <div className='page-container'>
+          <h1 className='container-title'>Compound Interest Calculator</h1>
+        </div>
+      </Route>
       <Route>
         <Redirect to='/' />
       </Route>
