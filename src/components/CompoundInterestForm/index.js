@@ -28,6 +28,13 @@ const CompoundInterestForm = () => {
                 className='input-field-c'
                 min='0'
             />
+            <label>
+                Compound Frequency:
+                <select className='input-field-c' id='compount-frequency-input'>
+                    <option className='input-field-c'>Annually</option>
+                    <option className='input-field-c'>Monthly</option>
+                </select>
+            </label>
         </form>
     );
 }
