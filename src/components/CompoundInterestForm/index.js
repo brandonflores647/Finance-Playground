@@ -1,14 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, createRef } from 'react';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
 
 import './CompoundInterestForm.css'
 
 const CompoundInterestForm = () => {
+
+    const ref = useRef();
+    const [chartWidth, setChartWidth] = useState(0);
 
     const [init, setInit] = useState(1);
     const [monthlyCont, setMonthlyCont] = useState('');
     const [time, setTime] = useState(1);
     const [interest, setInterest] = useState(0);
     const [freq, setFreq] = useState('Annually');
+    const [data, setData] = useState([]);
 
     const handleReset = () => {
         setInit(1);
@@ -16,7 +21,13 @@ const CompoundInterestForm = () => {
         setTime(1);
         setInterest(0);
         setFreq('Annually');
+        setData([]);
     }
+
+    useEffect(() => {
+        setChartWidth(ref.current.clientWidth)
+        window.addEventListener("resize", (e) => setChartWidth(ref.current.clientWidth))
+    }, [])
 
     return (
         <>
@@ -25,7 +36,7 @@ const CompoundInterestForm = () => {
                     onClick={handleReset}
                     >RESET</button>
         </section>
-        <form id='compound-interest-form'>
+        <form id='compound-interest-form' ref={ref}>
             <label>Initial Investment:</label>
             <input
                 type='number'
@@ -72,6 +83,14 @@ const CompoundInterestForm = () => {
                 </select>
             </label>
         </form>
+        <section>
+            <LineChart width={chartWidth} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+              <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+              <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+              <XAxis dataKey="name" />
+              <YAxis />
+            </LineChart>
+        </section>
         </>
     );
 }
