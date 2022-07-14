@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, createRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
 
 import './CompoundInterestForm.css'
@@ -10,10 +10,10 @@ const CompoundInterestForm = () => {
 
     const [init, setInit] = useState(1);
     const [monthlyCont, setMonthlyCont] = useState('');
-    const [time, setTime] = useState(1);
+    const [time, setTime] = useState(2);
     const [interest, setInterest] = useState(0);
     const [freq, setFreq] = useState('Annually');
-    const [data, setData] = useState([]);
+    const [data, setData] = useState([{name:''}]);
 
     const handleReset = () => {
         setInit(1);
@@ -21,7 +21,25 @@ const CompoundInterestForm = () => {
         setTime(1);
         setInterest(0);
         setFreq('Annually');
-        setData([]);
+        setData([{name:''}]);
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        let dataArr = [];
+        for (let i = 1; i <= time; i++) {
+            dataArr.push({
+                name: `Year ${i}`
+            });
+        }
+
+        setData(dataArr);
+
+        setInit(1);
+        setMonthlyCont('');
+        setTime(1);
+        setInterest(0);
+        setFreq('Annually');
     }
 
     useEffect(() => {
@@ -36,7 +54,7 @@ const CompoundInterestForm = () => {
                     onClick={handleReset}
                     >RESET</button>
         </section>
-        <form id='compound-interest-form' ref={ref}>
+        <form id='compound-interest-form' ref={ref} onSubmit={handleSubmit}>
             <label>Initial Investment:</label>
             <input
                 type='number'
@@ -58,7 +76,7 @@ const CompoundInterestForm = () => {
             <input
                 type='number'
                 className='input-field-c'
-                min='1'
+                min='2'
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
             />
@@ -82,6 +100,7 @@ const CompoundInterestForm = () => {
                     <option className='input-field-c'>Monthly</option>
                 </select>
             </label>
+            <button type='submit'>Compound it!</button>
         </form>
         <section>
             <LineChart width={chartWidth} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
