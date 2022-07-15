@@ -25,10 +25,12 @@ const CompoundInterestForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         let dataArr = [];
-        let val = init;
+        let val = parseInt(init, 10);
 
-        for (let i = 1; i <= time; i++) {
-            val = (val * (1 + interest/100)) + (monthlyCont*12);
+        for (let i = 0; i <= time; i++) {
+            if (i !== 0) {
+                val = (val * (1 + interest/100)) + (monthlyCont*12);
+            }
             dataArr.push({
                 name: `Year ${i}`,
                 // Value: parseFloat((init * Math.pow(1 + interest/100, i)).toFixed(2))
@@ -43,7 +45,7 @@ const CompoundInterestForm = () => {
         setChartMargin((ref.current.clientWidth));
         window.addEventListener('resize', () => setChartMargin((ref.current.clientWidth)))
     }, []);
-    console.log(chartMargin)
+
     return (
         <>
         <div className='page-container' ref={ref}>
