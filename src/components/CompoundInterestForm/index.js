@@ -13,6 +13,7 @@ const CompoundInterestForm = () => {
     const [time, setTime] = useState(2);
     const [interest, setInterest] = useState(0);
     const [data, setData] = useState([{name:''}]);
+    const [endVal, setEndVal] = useState('');
 
     const handleReset = () => {
         setInit(1);
@@ -20,6 +21,7 @@ const CompoundInterestForm = () => {
         setTime(2);
         setInterest(0);
         setData([{name:''}]);
+        setEndVal('');
     }
 
     const handleSubmit = (e) => {
@@ -33,12 +35,12 @@ const CompoundInterestForm = () => {
             }
             dataArr.push({
                 name: `Year ${i}`,
-                // Value: parseFloat((init * Math.pow(1 + interest/100, i)).toFixed(2))
                 Value: parseFloat(val.toFixed(2))
             });
         }
 
         setData(dataArr);
+        setEndVal(`$${dataArr[dataArr.length-1].Value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
     }
 
     useEffect(() => {
@@ -50,6 +52,7 @@ const CompoundInterestForm = () => {
         <>
         <div className='page-container' ref={ref}>
         <section id='compount-top'>
+            <p>End Value: {endVal}</p>
             <button id='compount-reset-button'
                     onClick={handleReset}
                     >RESET</button>
