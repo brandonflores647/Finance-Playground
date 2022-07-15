@@ -17,7 +17,7 @@
 </div>
 
 ## Future Features:
-- Spot Filters
-- Google Maps
-- Favorite Spots
-- Reply to reviews
+- Ability to change compound frequency in 'Compound Interest Calculator'
+- Add recurring bills to 'Expense Tracker'
+- More advanced history options (past weeks / past months)
+- Mobile support
