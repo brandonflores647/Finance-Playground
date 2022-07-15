@@ -1,0 +1,101 @@
+#compound-chart-container {
+    width: 100%;
+    margin: 30px 25% 30px 0;
+}
+
+#compound-interest-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#compound-interest-form > label {
+    font-weight: 600;
+}
+
+.input-field-c {
+    height: 30px;
+    border: 1px solid #D9D9D9;
+    margin-bottom: 15px;
+    padding: 0px 10px 0px 10px;
+    width: 100%;
+}
+.input-field-c:focus {
+    outline: none;
+}
+
+#compount-frequency-input {
+    width: 25%;
+    margin-top: 25px;
+    margin-left: 15px;
+}
+
+#compount-top {
+    display: flex;
+    width: 100%;
+    height: 80px;
+    justify-content: right;
+}
+
+#compount-reset-button {
+    width: 150px;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    cursor: pointer;
+    background-color: white;
+    font-size: 20px;
+    font-weight: 600;
+    color: #B9342D;
+
+    border: 2px solid #B9342D;
+    border-radius: 7px;
+    box-shadow: 0px 3px 0px 0px #B9342D;
+    transition: box-shadow .1s ease,
+                margin-top .1s ease,
+                margin-bottom .1s ease,
+}
+#compount-reset-button:hover {
+    margin-top: 8px;
+    box-shadow: 0px 5px 0px 0px #B9342D;
+}
+#compount-reset-button:active:hover {
+    margin-top: 13px;
+    box-shadow: 0px 0px 0px 0px #B9342D;
+}
+
+#compound-bottom {
+    display: flex;
+    width: 100%;
+    height: 80px;
+    justify-content: center;
+}
+
+#compound-submit-button {
+    width: 300px;
+    height: 50px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+
+    cursor: pointer;
+    background-color: white;
+    font-size: 20px;
+    font-weight: 600;
+    color: #6B5BB6;
+
+    border: 2px solid #6B5BB6;
+    border-radius: 7px;
+    box-shadow: 0px 3px 0px 0px #6B5BB6;
+    transition: box-shadow .1s ease,
+                margin-top .1s ease,
+                margin-bottom .1s ease,
+}
+#compound-submit-button:hover {
+    margin-top: 13px;
+    box-shadow: 0px 5px 0px 0px #6B5BB6;
+}
+#compound-submit-button:active:hover {
+    margin-top: 18px;
+    box-shadow: 0px 0px 0px 0px #6B5BB6;
+}

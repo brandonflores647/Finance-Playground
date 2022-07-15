@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Balance from './components/Balance';
+import CompoundInterestForm from './components/CompoundInterestForm';
 import HistoryTransaction from './components/HistoryTransaction';
 import Navbar from './components/Navbar';
 
@@ -103,6 +104,10 @@ function App() {
 
         <HistoryTransaction info={JSON.parse(localStorage.getItem('expense-history'))} setTransList={setTransList} setBalance={setBalance} setIncome={setIncome} setExpense={setExpense}/>
         </div>
+      </Route>
+      <Route exact path='/compound-interest'>
+          <h1 className='container-title page-container'>Compound Interest Calculator</h1>
+          <CompoundInterestForm />
       </Route>
       <Route>
         <Redirect to='/' />
