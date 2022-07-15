@@ -60,8 +60,8 @@ function App() {
     <Navbar />
     <div id='content-wrapper'>
     <Switch>
-      <Route exact path='/'>
-        <h1>Home</h1>
+      <Route exact path='/about'>
+        <h1>About</h1>
       </Route>
       <Route exact path='/expense-tracker'>
         <div className='page-container'>
@@ -110,7 +110,7 @@ function App() {
           <CompoundInterestForm />
       </Route>
       <Route>
-        <Redirect to='/' />
+        <Redirect to='/expense-tracker' />
       </Route>
     </Switch>
     </div>
