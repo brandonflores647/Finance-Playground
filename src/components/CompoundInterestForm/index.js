@@ -1,12 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { useState, useEffect } from 'react';
+import { ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 
 import './CompoundInterestForm.css'
 
 const CompoundInterestForm = () => {
-
-    const ref = useRef();
-    const [chartWidth, setChartWidth] = useState(0);
 
     const [init, setInit] = useState(1);
     const [monthlyCont, setMonthlyCont] = useState('');
@@ -18,7 +15,7 @@ const CompoundInterestForm = () => {
     const handleReset = () => {
         setInit(1);
         setMonthlyCont('');
-        setTime(1);
+        setTime(2);
         setInterest(0);
         setFreq('Annually');
         setData([{name:''}]);
@@ -27,25 +24,16 @@ const CompoundInterestForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         let dataArr = [];
+
         for (let i = 1; i <= time; i++) {
             dataArr.push({
-                name: `Year ${i}`
+                name: `Year ${i}`,
+                Value: parseFloat((init * Math.pow(1 + interest/100, i)).toFixed(2))
             });
         }
 
         setData(dataArr);
-
-        setInit(1);
-        setMonthlyCont('');
-        setTime(1);
-        setInterest(0);
-        setFreq('Annually');
     }
-
-    useEffect(() => {
-        setChartWidth(ref.current.clientWidth)
-        window.addEventListener("resize", (e) => setChartWidth(ref.current.clientWidth))
-    }, [])
 
     return (
         <>
@@ -54,7 +42,7 @@ const CompoundInterestForm = () => {
                     onClick={handleReset}
                     >RESET</button>
         </section>
-        <form id='compound-interest-form' ref={ref} onSubmit={handleSubmit}>
+        <form id='compound-interest-form' onSubmit={handleSubmit}>
             <label>Initial Investment:</label>
             <input
                 type='number'
@@ -103,12 +91,17 @@ const CompoundInterestForm = () => {
             <button type='submit'>Compound it!</button>
         </form>
         <section>
-            <LineChart width={chartWidth} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-              <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-              <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-              <XAxis dataKey="name" />
-              <YAxis />
-            </LineChart>
+            <ResponsiveContainer width='100%' height={300}>
+                <LineChart
+                    data={data}
+                    margin={{ top: 10, right: 20, bottom: 5, left: 0 }}>
+                  <Line type="monotone" dataKey="Value" stroke="#8884d8" />
+                  <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <Tooltip />
+                </LineChart>
+            </ResponsiveContainer>
         </section>
         </>
     );
