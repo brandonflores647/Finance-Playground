@@ -1,10 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 
 import './CompoundInterestForm.css'
 
 const CompoundInterestForm = () => {
 
+    const ref = useRef()
+
+    const [chartMargin, setChartMargin] = useState(0);
     const [init, setInit] = useState(1);
     const [monthlyCont, setMonthlyCont] = useState('');
     const [time, setTime] = useState(2);
@@ -22,20 +25,28 @@ const CompoundInterestForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         let dataArr = [];
+        let val = init;
 
         for (let i = 1; i <= time; i++) {
+            val = (val * (1 + interest/100)) + (monthlyCont*12);
             dataArr.push({
                 name: `Year ${i}`,
-                Value: parseFloat((init * Math.pow(1 + interest/100, i)).toFixed(2))
+                // Value: parseFloat((init * Math.pow(1 + interest/100, i)).toFixed(2))
+                Value: parseFloat(val.toFixed(2))
             });
         }
 
         setData(dataArr);
     }
 
+    useEffect(() => {
+        setChartMargin((ref.current.clientWidth));
+        window.addEventListener('resize', () => setChartMargin((ref.current.clientWidth)))
+    }, []);
+    console.log(chartMargin)
     return (
         <>
-        <div className='page-container'>
+        <div className='page-container' ref={ref}>
         <section id='compount-top'>
             <button id='compount-reset-button'
                     onClick={handleReset}
@@ -64,6 +75,7 @@ const CompoundInterestForm = () => {
                 type='number'
                 className='input-field-c'
                 min='2'
+                max='80'
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
             />
@@ -72,6 +84,7 @@ const CompoundInterestForm = () => {
                 type='number'
                 className='input-field-c'
                 min='0'
+                max='200'
                 value={interest}
                 onChange={(e) => setInterest(e.target.value)}
             />
@@ -81,10 +94,10 @@ const CompoundInterestForm = () => {
         </form>
         </div>
         <section id='compound-chart-container'>
-            <ResponsiveContainer width='47%' height={400}>
+            <ResponsiveContainer width='100%' height={400}>
                 <LineChart
                     data={data}
-                    margin={{ top: 10, right: 20, bottom: 5, left: 20 }}
+                    margin={{ top: 10, right: (chartMargin>480 ? chartMargin*.75 : 50), bottom: 5, left: (chartMargin>480 ? chartMargin*.65 : 50) }}
                 >
                     <Line type="monotone" dataKey="Value" stroke="#8884d8" />
                     <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
