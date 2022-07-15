@@ -60,8 +60,47 @@ function App() {
     <Navbar />
     <div id='content-wrapper'>
     <Switch>
-      <Route exact path='/'>
-        <h1>Home</h1>
+      <Route exact path='/about'>
+        <div className='page-container'>
+          <h1 className='container-title'>About</h1>
+          <p>Finance Playground is an application designed to bring you an Expense Tracker and Compound Interest Calculator tool bundled into one neat package. Designed with simplicity in mind, the tools provided to you are clear and concise with no unnecessary confusion.</p>
+          <h2 className='container-title'>The Design</h2>
+          <p>The minimal design was planned through Figma's wireframing tool and was implemented in Vanilla CSS. Other than the graph in the 'Compound Interest Calculator' tab, no outside libraries were used.</p>
+          <p>The Compound Interest Calculator graph was implemented using the <span><a href='https://recharts.org/en-US/' target='https://recharts.org/en-US/'>Rechart</a></span> Library. Rechart is a highly customizable, composable charting library built on React components.</p>
+          <h2 className='container-title'>Technologies Used</h2>
+          <section style={{
+              display: 'flex',
+              justifyContent: 'space-evenly',
+              margin: '30px 0 30px 0'
+            }}>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" alt='' width='15%' />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt='' width='15%' />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt='' width='15%' />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt='' width='15%' />
+          </section>
+          <h2 className='container-title'>Contact Me</h2>
+          <section style={{
+              fontSize: '20px'
+            }}>
+            <a href='https://www.linkedin.com/in/brandon-flores-798b98239/' target='https://www.linkedin.com/in/brandon-flores-798b98239/' style={{textDecoration:'none', color:'#6B5BB6', textShadow:'0px 0px 3px #fff', fontWeight:'500'}}>
+              <p style={{display: 'flex', alignItems:'center', textDecoration:'none'}}>
+                <span style={{marginRight: '10px'}}>
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt='' width='30px' />
+                </span>
+                LinkedIn
+              </p>
+            </a>
+            <a href='https://github.com/brandonflores647' target='https://github.com/brandonflores647' style={{textDecoration:'none', color:'#6B5BB6', textShadow:'0px 0px 3px #fff', fontWeight:'500'}}>
+              <p style={{display: 'flex', alignItems:'center'}}>
+                <span style={{marginRight: '10px'}}>
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt='' width='30px' />
+                </span>
+                Github
+              </p>
+            </a>
+            <p>~ Brandon Flores</p>
+          </section>
+        </div>
       </Route>
       <Route exact path='/expense-tracker'>
         <div className='page-container'>
@@ -110,7 +149,7 @@ function App() {
           <CompoundInterestForm />
       </Route>
       <Route>
-        <Redirect to='/' />
+        <Redirect to='/expense-tracker' />
       </Route>
     </Switch>
     </div>
