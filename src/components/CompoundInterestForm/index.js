@@ -84,7 +84,7 @@ const CompoundInterestForm = () => {
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
             />
-            <label>Estimated interest rate:</label>
+            <label>Annual estimated interest rate:</label>
             <input
                 type='number'
                 className='input-field-c'
