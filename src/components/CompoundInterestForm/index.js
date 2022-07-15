@@ -9,7 +9,6 @@ const CompoundInterestForm = () => {
     const [monthlyCont, setMonthlyCont] = useState('');
     const [time, setTime] = useState(2);
     const [interest, setInterest] = useState(0);
-    const [freq, setFreq] = useState('Annually');
     const [data, setData] = useState([{name:''}]);
 
     const handleReset = () => {
@@ -17,7 +16,6 @@ const CompoundInterestForm = () => {
         setMonthlyCont('');
         setTime(2);
         setInterest(0);
-        setFreq('Annually');
         setData([{name:''}]);
     }
 
@@ -37,6 +35,7 @@ const CompoundInterestForm = () => {
 
     return (
         <>
+        <div className='page-container'>
         <section id='compount-top'>
             <button id='compount-reset-button'
                     onClick={handleReset}
@@ -76,29 +75,27 @@ const CompoundInterestForm = () => {
                 value={interest}
                 onChange={(e) => setInterest(e.target.value)}
             />
-            <label>
-                Compound Frequency:
-                <select
-                    className='input-field-c'
-                    id='compount-frequency-input'
-                    value={freq}
-                    onChange={(e) => setFreq(e.target.value)}
-                >
-                    <option className='input-field-c'>Annually</option>
-                    <option className='input-field-c'>Monthly</option>
-                </select>
-            </label>
-            <button type='submit'>Compound it!</button>
+            <section id='compound-bottom'>
+                <button type='submit' id='compound-submit-button'>Compound it!</button>
+            </section>
         </form>
-        <section>
-            <ResponsiveContainer width='100%' height={300}>
+        </div>
+        <section id='compound-chart-container'>
+            <ResponsiveContainer width='47%' height={400}>
                 <LineChart
                     data={data}
-                    margin={{ top: 10, right: 20, bottom: 5, left: 0 }}>
-                  <Line type="monotone" dataKey="Value" stroke="#8884d8" />
-                  <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
+                    margin={{ top: 10, right: 20, bottom: 5, left: 20 }}
+                >
+                    <Line type="monotone" dataKey="Value" stroke="#8884d8" />
+                    <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                    <XAxis
+                        dataKey="name"
+                        minTickGap={30}
+                        />
+                    <YAxis
+                        domain={['dataMin', 'dataMax']}
+                        width={75}
+                    />
                   <Tooltip />
                 </LineChart>
             </ResponsiveContainer>

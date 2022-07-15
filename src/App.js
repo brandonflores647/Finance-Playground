@@ -106,10 +106,8 @@ function App() {
         </div>
       </Route>
       <Route exact path='/compound-interest'>
-        <div className='page-container'>
-          <h1 className='container-title'>Compound Interest Calculator</h1>
+          <h1 className='container-title page-container'>Compound Interest Calculator</h1>
           <CompoundInterestForm />
-        </div>
       </Route>
       <Route>
         <Redirect to='/' />
