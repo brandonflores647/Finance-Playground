@@ -53,9 +53,12 @@ const CompoundInterestForm = () => {
         <div className='page-container' ref={ref}>
         <section id='compount-top'>
             <p>End Value: {endVal}</p>
-            <button id='compount-reset-button'
-                    onClick={handleReset}
-                    >RESET</button>
+            <div className={'button-container'}>
+                <button id='compount-reset-button' onClick={handleReset}>
+                    RESET
+                </button>
+                <div className={'button-back button-back-red'}></div>
+            </div>
         </section>
         <form id='compound-interest-form' onSubmit={handleSubmit}>
             <label>Initial Investment:</label>
@@ -94,7 +97,12 @@ const CompoundInterestForm = () => {
                 onChange={(e) => setInterest(e.target.value)}
             />
             <section id='compound-bottom'>
-                <button type='submit' id='compound-submit-button'>Compound it!</button>
+            <div className={'button-container'}>
+                <button id='compound-submit-button' type='submit'>
+                    Compound it!
+                </button>
+                <div className={'button-back'}></div>
+            </div>
             </section>
         </form>
         </div>

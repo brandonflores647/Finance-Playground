@@ -35,16 +35,12 @@
   transition: bottom 0.1s ease, border-color 0.1s ease, color 0.5s ease;
 }
 
-#submit-expense-form-button:hover {
+#submit-expense-form-button:hover, #submit-expense-form-button-err:hover {
   bottom: 3px;
 }
 
 #submit-expense-form-button:active:hover {
   bottom: -4px;
-}
-
-#submit-expense-form-button-err:hover {
-  bottom: 3px;
 }
 
 #submit-expense-form-button-err:active:hover {

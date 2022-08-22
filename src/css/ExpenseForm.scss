@@ -49,14 +49,11 @@ $dark-red: #B9342D;
                 border-color .1s ease,
                 color .5s ease;
 }
-#submit-expense-form-button:hover {
+#submit-expense-form-button:hover, #submit-expense-form-button-err:hover {
     @include buttonHover(3px);
 }
 #submit-expense-form-button:active:hover {
     @include buttonClick(4px);
-}
-#submit-expense-form-button-err:hover {
-    @include buttonHover(3px);
 }
 #submit-expense-form-button-err:active:hover {
     @include buttonClick(4px);
