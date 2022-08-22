@@ -1,0 +1,121 @@
+$dark-red: #B9342D;
+$dark-purple: #6B5BB6;
+
+@mixin buttonHover($height) {
+    bottom: $height;
+}
+@mixin buttonClick($down-height) {
+    bottom: -$down-height;
+}
+
+.button-container {
+    position: relative;
+    height: fit-content;
+}
+
+.button-back {
+    position: absolute;
+    z-index: -1;
+    top: 4px;
+    width: 100%;
+    height: 100%;
+
+    border-radius: 7px;
+    background-color: $dark-purple;
+    transition: background-color .1s ease;
+}
+.button-back-red {
+    background-color: $dark-red !important;
+}
+
+#compound-chart-container {
+    width: 100%;
+    margin: 30px 25% 30px 0;
+}
+
+#compound-interest-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#compound-interest-form > label {
+    font-weight: 600;
+}
+
+.input-field-c {
+    height: 30px;
+    border: 1px solid #D9D9D9;
+    margin-bottom: 15px;
+    padding: 0px 10px 0px 10px;
+    width: 100%;
+}
+.input-field-c:focus {
+    outline: none;
+}
+
+#compount-frequency-input {
+    width: 25%;
+    margin-top: 25px;
+    margin-left: 15px;
+}
+
+#compount-top {
+    display: flex;
+    width: 100%;
+    height: 80px;
+    justify-content: space-between;
+    align-items: center;
+}
+#compount-top > p {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+#compount-reset-button {
+    position: relative;
+    width: 150px;
+    height: 50px;
+    bottom: 0px;
+
+    cursor: pointer;
+    background-color: white;
+    font-size: 20px;
+    font-weight: 600;
+    color: $dark-red;
+
+    border: 2px solid $dark-red;
+    border-radius: 7px;
+    transition: bottom .1s ease;
+}
+
+#compound-bottom {
+    display: flex;
+    width: 100%;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+}
+
+#compound-submit-button {
+    position: relative;
+    bottom: 0px;
+    width: 300px;
+    height: 50px;
+
+    cursor: pointer;
+    background-color: white;
+    font-size: 20px;
+    font-weight: 600;
+    color: $dark-purple;
+
+    border: 2px solid $dark-purple;
+    border-radius: 7px;
+    transition: bottom .1s ease;
+}
+#compound-submit-button:hover, #compount-reset-button:hover {
+    @include buttonHover(3px);
+}
+#compound-submit-button:active:hover,#compount-reset-button:active:hover {
+    @include buttonClick(4px);
+}

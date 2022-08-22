@@ -6,7 +6,7 @@ import CompoundInterestForm from './components/CompoundInterestForm';
 import HistoryTransaction from './components/HistoryTransaction';
 import Navbar from './components/Navbar';
 
-import './ExpenseForm.css'
+import './css/ExpenseForm.css'
 
 function App() {
 
@@ -137,7 +137,12 @@ function App() {
                 </section>
               </div>
             </div>
-            <button id={`submit-expense-form-button${!title || !amount ? '-err' : ''}`} type='submit'>Submit</button>
+            <div className={'button-container'}>
+              <button id={`submit-expense-form-button${!title || !amount ? '-err' : ''}`} type='submit'>
+                Submit
+              </button>
+              <div className={'button-back'}></div>
+            </div>
           </form>
         </div>
 
