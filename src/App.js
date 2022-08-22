@@ -137,7 +137,12 @@ function App() {
                 </section>
               </div>
             </div>
-            <button id={`submit-expense-form-button${!title || !amount ? '-err' : ''}`} type='submit'>Submit</button>
+            <div className={'button-container'}>
+              <button id={`submit-expense-form-button${!title || !amount ? '-err' : ''}`} type='submit'>
+                Submit
+              </button>
+              <div className={'button-back'}></div>
+            </div>
           </form>
         </div>
 

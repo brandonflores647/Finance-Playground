@@ -1,4 +1,12 @@
 $dark-purple: #6B5BB6;
+$dark-red: #B9342D;
+
+@mixin buttonHover($height) {
+    bottom: $height;
+}
+@mixin buttonClick($down-height) {
+    bottom: -$down-height;
+}
 
 #expense-form {
     display: flex;
@@ -7,10 +15,27 @@ $dark-purple: #6B5BB6;
     width: 100%;
 }
 
+.button-container {
+    position: relative;
+}
+
+.button-back {
+    position: absolute;
+    z-index: -1;
+    top: 4px;
+    width: 100%;
+    height: 100%;
+
+    border-radius: 7px;
+    background-color: $dark-purple;
+    transition: background-color .1s ease;
+}
+
 #submit-expense-form-button,#submit-expense-form-button-err {
-    width: 220px;
+    position: relative;
+    width: 180px;
     height: 50px;
-    margin-top: 25px;
+    bottom: 0px;
 
     cursor: pointer;
     background-color: white;
@@ -20,30 +45,26 @@ $dark-purple: #6B5BB6;
 
     border: 2px solid $dark-purple;
     border-radius: 7px;
-    box-shadow: 0px 3px 0px 0px $dark-purple;
-    transition: box-shadow .1s ease,
-                margin-top .1s ease,
-                margin-bottom .1s ease,
+    transition: bottom .1s ease,
                 border-color .1s ease,
                 color .5s ease;
 }
 #submit-expense-form-button:hover {
-    margin-bottom: 4px;
-    box-shadow: 0px 5px 0px 0px $dark-purple;
+    @include buttonHover(3px);
 }
 #submit-expense-form-button:active:hover {
-    margin-top: 34px;
-    box-shadow: 0px 0px 0px 0px $dark-purple;
+    @include buttonClick(4px);
 }
 #submit-expense-form-button-err:hover {
-    margin-bottom: 4px;
-    box-shadow: 0px 5px 0px 0px $dark-purple;
+    @include buttonHover(3px);
 }
 #submit-expense-form-button-err:active:hover {
-    margin-top: 34px;
-    color: #B9342D;
-    border-color: #B9342D;
-    box-shadow: 0px 0px 0px 0px #B9342D;
+    @include buttonClick(4px);
+    color: $dark-red;
+    border-color: $dark-red;
+}
+#submit-expense-form-button-err:active:hover + .button-back {
+    background-color: $dark-red;
 }
 
 #expense-form-inputs {
