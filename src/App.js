@@ -6,7 +6,7 @@ import CompoundInterestForm from './components/CompoundInterestForm';
 import HistoryTransaction from './components/HistoryTransaction';
 import Navbar from './components/Navbar';
 
-import './ExpenseForm.css'
+import './css/ExpenseForm.css'
 
 function App() {
 

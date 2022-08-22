@@ -1,0 +1,80 @@
+#expense-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+#submit-expense-form-button, #submit-expense-form-button-err {
+  width: 220px;
+  height: 50px;
+  margin-top: 25px;
+  cursor: pointer;
+  background-color: white;
+  font-size: 20px;
+  font-weight: 600;
+  color: #6B5BB6;
+  border: 2px solid #6B5BB6;
+  border-radius: 7px;
+  box-shadow: 0px 3px 0px 0px #6B5BB6;
+  transition: box-shadow 0.1s ease, margin-top 0.1s ease, margin-bottom 0.1s ease, border-color 0.1s ease, color 0.5s ease;
+}
+
+#submit-expense-form-button:hover {
+  margin-bottom: 4px;
+  box-shadow: 0px 5px 0px 0px #6B5BB6;
+}
+
+#submit-expense-form-button:active:hover {
+  margin-top: 34px;
+  box-shadow: 0px 0px 0px 0px #6B5BB6;
+}
+
+#submit-expense-form-button-err:hover {
+  margin-bottom: 4px;
+  box-shadow: 0px 5px 0px 0px #6B5BB6;
+}
+
+#submit-expense-form-button-err:active:hover {
+  margin-top: 34px;
+  color: #B9342D;
+  border-color: #B9342D;
+  box-shadow: 0px 0px 0px 0px #B9342D;
+}
+
+#expense-form-inputs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 15px;
+}
+
+#expense-form-inputs > div {
+  display: flex;
+}
+
+#expense-form-inputs > label {
+  font-weight: 600;
+}
+
+.input-field {
+  height: 30px;
+  border: 1px solid #D9D9D9;
+  margin-bottom: 15px;
+  padding: 0px 10px 0px 10px;
+  width: 60%;
+}
+
+.input-field:focus {
+  outline: none;
+}
+
+#amount-desc-container {
+  font-size: 11px;
+}
+
+#amount-desc-container > p {
+  margin: 0;
+  padding: 0 0 0 10px;
+  color: #a5a5a5;
+}/*# sourceMappingURL=ExpenseForm.css.map */
