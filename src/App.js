@@ -77,6 +77,7 @@ function App() {
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt='' width='15%' />
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt='' width='15%' />
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt='' width='15%' />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" alt='' width='15%' />
           </section>
           <h2 className='container-title'>Contact Me</h2>
           <section style={{
